@@ -74,3 +74,15 @@ server.listen(3000, () => {
     console.log("Server ruuning!")
 })
 ```
+
+## Criar script no pachage.json (ou substituir a tag test) 
+```json
+"scripts": {
+    "dev": "nodemon --exec ts-node ./src/server.ts"
+  },
+```
+- Execute a seguir:
+```shell
+npm run dev
+```
+Teste no POSTMAN

@@ -41,3 +41,36 @@ npm i -D @types/json-server
 ```shell
 npx json-server db.json
 ```
+
+## Crie um tsconfig.json com o commando:
+
+```shell
+npx tsc --init
+```
+- No arquivo mudar a referencia "target" de "es2016" para "ES2022"
+- Descomente "outDir" e coloque o diretorio do build do projeto como "./dist"
+
+## Altera o arquivo server.js.
+
+```js
+import jsonServer from "json-server";
+
+const databasePath = "db.json"
+
+const server = jsonServer.create()
+const router = jsonServer.router(databasePath)
+
+server.use(jsonServer.defaults({
+    bodyParser: true
+}))
+
+server.post('/register',(req, res) => {
+    return res.json("Tudo ok!")
+})
+
+server.use(router)
+
+server.listen(3000, () => {
+    console.log("Server ruuning!")
+})
+```
